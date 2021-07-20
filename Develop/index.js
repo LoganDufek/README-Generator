@@ -12,6 +12,33 @@ const questions = answers => {
         .prompt([
             {
                 type: 'input',
+                name: 'github',
+                message: 'Enter your GitHub Username:',
+                validate: githubInput => {
+                    if (githubInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter your GitHub username!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Enter your email address:',
+                validate: emailInput => {
+                    if (emailInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter your email!');
+                        return false;
+                    }
+                }
+            },
+
+            {
+                type: 'input',
                 name: 'title',
                 message: 'What is the name of your project? (Required)',
                 validate: titleInput => {
@@ -81,65 +108,47 @@ const questions = answers => {
                 }
             },
             {
-                type: 'checkbox',
+                type: 'confirm',
+                name: 'confirmLicense',
+                message: 'Would you like to add a license to your project?',
+                default: true
+            },
+            {
+                type: 'list',
                 name: 'license',
                 message: 'What license would you like to apply to this project? (Select One)',
-                choices: ['Apache License 2.0', 'MIT', 'GNU GPLv3 ', ' ISC License', 'Mozilla Public License 2.0 ']
+                default: false,
+                choices: ['Apache-2.0', 'MIT', 'GNU-GPLv3', 'ISC', 'Mozilla-2.0'],
+                when: ({ confirmLicense }) => confirmLicense
             },
             {
                 type: 'input',
                 name: 'tests',
                 message: 'If you wish to, provide examples of how your application is meant to run: (Optional)',
 
-            },
-            {
-                type: 'input',
-                name: 'github',
-                message: 'Enter your GitHub Username:',
-                validate: githubInput => {
-                    if (githubInput) {
-                        return true;
-                    } else {
-                        console.log('Please enter your GitHub username!');
-                        return false;
-                    }
-                }
-            },
-            {
-                type: 'input',
-                name: 'email',
-                message: 'Enter your email address:',
-                validate: emailInput => {
-                    if (emailInput) {
-                        return true;
-                    } else {
-                        console.log('Please enter your email!');
-                        return false;
-                    }
-                }
             }
+
         ])
-      
-.then (function writeToFile(readmeData) {
-    var readmeFormat = generateMarkdown(readmeData)
-   
-        fs.writeFile('./README.md' , readmeFormat, err => {
-            if (err) {
-                throw(err);
-              
-            }
-           console.log('File created!')
+
+        .then(function writeToFile(readmeData) {
+            var readmeFormat = generateMarkdown(readmeData)
+
+            fs.writeFile('./README.md', readmeFormat, err => {
+                if (err) {
+                    throw (err);
+
+                }
+                console.log('File created!')
             })
         })
-  
 };
 
 
 // TODO: Create a function to initialize app
 function init() {
 
-   questions()
-    } 
+    questions()
+}
 
 // Function call to initialize app
 init();
