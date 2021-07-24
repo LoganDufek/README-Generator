@@ -5,13 +5,13 @@ This week's challenge was to generate a custom README markdown file using only J
 
 ### Screenshots
 You invoke the program from the command line using the following line:
-![README Screenshot One](./Develop/images/READMEScreenshotOne.png)
+![README Screenshot One](./Develop/images/READMEScreenShotOne.png)
 
 You will then be given a series of propts to fill out:
-![README Screenshot Two](./Develop/images/READMEScreenshotTwo.png)
+![README Screenshot Two](./Develop/images/READMEScreenShotTwo.png)
 
 If the program was executed correctly, the following message will appear and the markdown file has been sucessfully generated!
-![README Screenshot Three](./Develop/images/READMEScreenshotThree.png)
+![README Screenshot Three](./Develop/images/READMEScreenShotThree.png)
 
 ### Links
 Github: [Link](https://github.com/LoganDufek/README-Generator)
