@@ -8,7 +8,9 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 const questions = answers => {
 
     answers = []
+    //Inquirer is called
     return inquirer
+    //Series of propts and validation for required questions
         .prompt([
             {
                 type: 'input',
@@ -118,7 +120,7 @@ const questions = answers => {
                 name: 'license',
                 message: 'What license would you like to apply to this project? (Select One)',
                 default: false,
-                choices: ['Apache-2.0', 'MIT', 'GNU-GPLv3', 'ISC', 'Mozilla-2.0'],
+                choices: ['Apache-2.0', 'MIT', 'GNU-GPLv3', 'ISC', 'MPL-2.0'],
                 when: ({ confirmLicense }) => confirmLicense
             },
             {
@@ -129,11 +131,11 @@ const questions = answers => {
             }
 
         ])
-
+        // Takes the data entered and passes it into the generateMarkdown function
         .then(function writeToFile(readmeData) {
             var readmeFormat = generateMarkdown(readmeData)
 
-            fs.writeFile('./README.md', readmeFormat, err => {
+            fs.writeFile('./SAMPLE_README.md', readmeFormat, err => {
                 if (err) {
                     throw (err);
 
@@ -145,9 +147,7 @@ const questions = answers => {
 
 
 // TODO: Create a function to initialize app
-function init() {
-
-    questions()
+function init() {questions()
 }
 
 // Function call to initialize app

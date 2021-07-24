@@ -18,6 +18,7 @@ const renderLicenseBadge = () => {
 const renderLicenseLink = () => { 
   readmeLicenseLink = readmeData.license.toLowerCase();
 
+  //if statement to check and see wether a license for the README is desired
 if (readmeData.confirmLicense === false) {
   return '';
 }
@@ -30,18 +31,19 @@ return `
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 const renderLicenseSection = () => { 
+  //if statement to check and see wether a license for the README is desired
   if (readmeData.confirmLicense === false) {
     return '';
   } 
   return `
-  ## License
-  Licensed Used: ${readmeData.license}
-  ${renderLicenseLink()}
+## License
+  Licensed Used: ${renderLicenseLink()}
 `;
  };
 
 
   const generateToC = () => {
+    //if statement to check and see wether a ToC for the README is desired
     if (readmeData.confirmToC === false) {
       return '';
     }
@@ -82,8 +84,8 @@ ${readmeData.tests}
 
 ## Questions
 If you have questions for me about this project, you can find my GitHub and Email address below:
-[GitHub Link](https://github.com/${readmeData.github})
-${readmeData.email}
+Github: [${readmeData.github}](https://github.com/${readmeData.github})
+Email: ${readmeData.email}
 `;
 };
 
